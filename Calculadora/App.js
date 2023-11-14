@@ -79,7 +79,10 @@ export default function App() {
         calculator()
         return
       case '+/-':
-        return
+        var change = currentNumber * -1;
+        isNaN(change) ? Alert.alert("Invalid Format") : setCurrentNumber(change);
+      return;
+      
     }
 
     setCurrentNumber(currentNumber + buttonPressed)
