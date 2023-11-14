@@ -57,6 +57,7 @@ export default function App() {
   function handleInput(buttonPressed) {
     console.log(buttonPressed); // Mostra no Console a tecla pressionada
     if (
+    
       buttonPressed === '+' ||
       buttonPressed === '-' ||
       buttonPressed === 'x' ||
@@ -67,7 +68,7 @@ export default function App() {
     }
     switch(buttonPressed){
       case 'DEL':
-        setCurrentNumber(currentNumber.substring(0, (currentNumber.length - 2)))
+        setCurrentNumber(currentNumber.substring(0, (currentNumber.length -  1)))
         return
       case 'LIMPAR': // Limpa todo o conteúdo
         setLastNumber("") 
