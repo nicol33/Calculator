@@ -1,6 +1,6 @@
 import React from 'react';
-import {useState} from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import {useState} from 'react';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 
 export default function App() {
   // Mapeamento de teclas
@@ -27,37 +27,36 @@ export default function App() {
     '=',
   ];
 
-  const [currentNumber, setCurrentNumber] = useState("")
-  const [lastNumber, setLastNumber] = useState("")
+  const [currentNumber, setCurrentNumber] = useState('');
+  const [lastNumber, setLastNumber] = useState('');
 
-
-  function calculator(){
-    const splitNumbers = currentNumber.split(' ')
-    const fistNumber = parseFloat(splitNumbers[0])
-    const lastNumber = parseFloat(splitNumbers[2])
-    const operator = splitNumbers[1]  
+  function calculator() {
+    const splitNumbers = currentNumber.split(' ');
+    const fistNumber = parseFloat(splitNumbers[0]);
+    // eslint-disable-next-line no-shadow
+    const lastNumber = parseFloat(splitNumbers[2]);
+    const operator = splitNumbers[1];
 
     // Faz ação referente tecla pressionada
-    switch(operator){
+    switch (operator) {
       case '+':
-        setCurrentNumber((fistNumber + lastNumber).toString())
-        return
-      case '-': 
-        setCurrentNumber((fistNumber - lastNumber).toString())
-        return
+        setCurrentNumber((fistNumber + lastNumber).toString());
+        return;
+      case '-':
+        setCurrentNumber((fistNumber - lastNumber).toString());
+        return;
       case 'x':
-        setCurrentNumber((fistNumber * lastNumber).toString())
-        return
-      case '/': 
-        setCurrentNumber((fistNumber / lastNumber).toString())
-        return
+        setCurrentNumber((fistNumber * lastNumber).toString());
+        return;
+      case '/':
+        setCurrentNumber((fistNumber / lastNumber).toString());
+        return;
     }
   }
 
   function handleInput(buttonPressed) {
     console.log(buttonPressed); // Mostra no Console a tecla pressionada
     if (
-    
       buttonPressed === '+' ||
       buttonPressed === '-' ||
       buttonPressed === 'x' ||
@@ -66,32 +65,29 @@ export default function App() {
       setCurrentNumber(currentNumber + ' ' + buttonPressed + ' ');
       return;
     }
-    switch(buttonPressed){
+    switch (buttonPressed) {
       case 'DEL':
-        setCurrentNumber(currentNumber.substring(0, (currentNumber.length -  1)))
-        return
+        setCurrentNumber(currentNumber.substring(0, currentNumber.length - 1));
+        return;
       case 'LIMPAR': // Limpa todo o conteúdo
-        setLastNumber("") 
-        setCurrentNumber("") 
-        return
+        setLastNumber('');
+        setCurrentNumber('');
+        return;
       case '=':
-        setLastNumber(currentNumber + " = ")
-        calculator()
-        return
+        setLastNumber(currentNumber + ' = ');
+        calculator();
+        return;
       case '+/-':
         var change = currentNumber * -1;
-        isNaN(change) ? Alert.alert("Invalid Format") : setCurrentNumber(change);
-      return;
-      
+          isNaN(change) ? Alert.alert("Invalid Format") : setCurrentNumber(change);
+        return;
     }
 
-    setCurrentNumber(currentNumber + buttonPressed)
+    setCurrentNumber(currentNumber + buttonPressed);
   }
-
 
   return (
     <View style={styles.container}>
-
       {/* Area onde o resultado é exibido */}
       <View style={styles.results}>
         <Text style={styles.historyText}>{lastNumber}</Text>
@@ -138,18 +134,18 @@ const styles = StyleSheet.create({
   },
   results: {
     flex: 2,
-    justifyContent: "center",
-    backgroundColor: "#f5f5f5"
+    justifyContent: 'center',
+    backgroundColor: '#1e0033',
   },
   resultText: {
-    color: "#282F38",
+    color: 'white',
     fontSize: 32,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     padding: 12,
-    textAlign: "right"
+    textAlign: 'right',
   },
-  historyText:{
-    color: "#7c7c7c",
+  historyText: {
+    color: 'gray',
     fontSize: 20,
     marginRight: 10,
     alignSelf: 'flex-end',
@@ -159,15 +155,15 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   button: {
-    backgroundColor: 'white',
+    backgroundColor: '#4b0082',
     alignItems: 'center',
     justifyContent: 'center',
-    minWidth: 90, 
+    minWidth: 90,
     minHeight: 90,
     flex: 2,
   },
   textButton: {
-    color: "#7c7c7c",
+    color: '#7c7c7c',
     fontSize: 20,
-  } 
+  },
 });
